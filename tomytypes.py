@@ -1,10 +1,37 @@
 from tkinter import *
 import random
 import time
+from datetime import datetime
 
 def start_timer():
-    srt_time = time.time
-    print(str_timer)
+    global t
+    t = time.time()
+
+
+def stop_timer():
+    te = time.time()
+    words = entry.get()
+    word_list = words.split()
+    number_of_words = len(word_list)
+    print(number_of_words)
+    tt = te - t
+    print(tt)
+    mins = tt / 60
+    global wpm
+    wpm = number_of_words / mins
+    print(wpm)
+    newerwindow()
+
+
+def newerwindow():
+    
+    newer = Toplevel(root)
+    newer.geometry('1000x200')
+    newer.title("DONE!")
+    Label(newer, text = "Your wpm is:", font = ("arial", 25)).grid(row=0,column=0)
+    Label(newer, text = wpm, font = ("arial", 25)).grid(row=1,column=0)
+    newer.lift()
+    newer.attributes("-topmost", True)
 
 root = Tk()
 
@@ -59,11 +86,11 @@ with open("validwords.txt", "r") as file:
 #!cahnge it from word 1
 def colorchange(user_word, filler, wordnum):
     global current_word
-    print(str(user_word) + " "+ str(word1))
+    print(str(user_word) + " "+ str(wordnum))
     if user_word == wordnum:
         current_word = current_word + 1
+        print(current_word)
         filler.configure(fg = "white")
-        print("correct")
         start_timer()
         clear_text()
     clear_text()
@@ -81,10 +108,64 @@ def excs(event):
         colorchange(user_word, lable4, word4)
     elif current_word == 5:
         colorchange(user_word, lable5, word5)
+    elif current_word == 6:
+        colorchange(user_word, lable6, word6)
+    elif current_word == 7:
+        colorchange(user_word, lable7, word7)
+    elif current_word == 8:
+        colorchange(user_word, lable8, word8)
+    elif current_word == 9:
+        colorchange(user_word, lable9, word9)
+    elif current_word == 10:
+        colorchange(user_word, lable10, word10)
+    elif current_word == 11:
+        colorchange(user_word, lable11, word11)
+    elif current_word == 12:
+        colorchange(user_word, lable12, word12)
+    elif current_word == 13:
+        colorchange(user_word, lable13, word13)
+    elif current_word == 14:
+        colorchange(user_word, lable14, word14)
+    elif current_word == 15:
+        colorchange(user_word, lable15, word15)
+    elif current_word == 16:
+        colorchange(user_word, lable16, word16)
+    elif current_word == 17:
+        colorchange(user_word, lable17, word17)
+    elif current_word == 18:
+        colorchange(user_word, lable18, word18)
+    elif current_word == 19:
+        colorchange(user_word, lable19, word19)
+    elif current_word == 20:
+        colorchange(user_word, lable20, word20)
+    elif current_word == 21:
+        colorchange(user_word, lable21, word21)
+    elif current_word == 22:
+        colorchange(user_word, lable22, word22)
+    elif current_word == 23:
+        colorchange(user_word, lable23, word23)
+    elif current_word == 24:
+        colorchange(user_word, lable24, word24)
+    elif current_word == 25:
+        colorchange(user_word, lable25, word25)
+    elif current_word == 26:
+        colorchange(user_word, lable26, word26)
+    elif current_word == 27:
+        colorchange(user_word, lable27, word27)
+    elif current_word == 28:
+        colorchange(user_word, lable28, word28)
+    elif current_word == 29:
+        stop_timer()
 
+def exca(event):
+    global current_word
+    current_word = 29
+    filler = 0
+    excs(filler)
 
 
 root.bind("<space>", excs)
+root.bind("<Return>", exca)
 
 lablestart = Label(root, text = "")
 lablestart.grid(row=0,column=0)
@@ -131,7 +212,7 @@ lable6.grid(row=1, column=6)
 lable7.grid(row=1, column=7)
 lable8.grid(row=1, column=8)
 lable9.grid(row=1, column=9)
-lable11.grid(row=1, column=10)
+lable10.grid(row=1, column=10)
 lable11.grid(row=3, column=0)
 lable12.grid(row=3, column=1)
 lable13.grid(row=3, column=2)
