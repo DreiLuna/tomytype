@@ -3,6 +3,10 @@ import random
 
 root = Tk()
 
+current_word = 1
+
+def clear_text():
+    entry.delete(0, END)
 
 def open_win():
     new = Toplevel(root)
@@ -18,7 +22,7 @@ with open("validwords.txt", "r") as file:
     allText = file.read()
     words = list(map(str, allText.split()))
     # print random string
-    word1 = random.choice(words)
+    word1 = str(random.choice(words))
     word2 = random.choice(words)
     word3 = random.choice(words)
     word4 = random.choice(words)
@@ -47,9 +51,25 @@ with open("validwords.txt", "r") as file:
     word27 = random.choice(words)
     word28 = random.choice(words)
 
+#!cahnge it from word 1
+def colorchange(user_word, filler):
+    global current_word
+    print(str(user_word) + " "+ str(word1))
+    if user_word == word1:
+        current_word = current_word + 1
+        filler.configure(fg = "white")
+        print("correct")
+    clear_text()
 
 def excs(event):
-    print("hey")
+    user_word = str(entry.get())
+    user_word = user_word.strip(" ")
+    if current_word == 1:
+        colorchange(user_word, lable1)
+    elif current_word == 2:
+        colorchange(user_word, lable2)
+
+
 
 root.bind("<space>", excs)
 
@@ -58,6 +78,7 @@ lablestart.grid(row=0,column=0)
 
 entry = Entry(root, width=10)
 entry.grid(row = 1, column = 0)
+
 
 lable1 = Label(root, text = word1)
 lable2 = Label(root, text = word2)
