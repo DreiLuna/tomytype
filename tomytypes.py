@@ -1,5 +1,10 @@
 from tkinter import *
 import random
+import time
+
+def start_timer():
+    srt_time = time.time
+    print(str_timer)
 
 root = Tk()
 
@@ -52,22 +57,30 @@ with open("validwords.txt", "r") as file:
     word28 = random.choice(words)
 
 #!cahnge it from word 1
-def colorchange(user_word, filler):
+def colorchange(user_word, filler, wordnum):
     global current_word
     print(str(user_word) + " "+ str(word1))
-    if user_word == word1:
+    if user_word == wordnum:
         current_word = current_word + 1
         filler.configure(fg = "white")
         print("correct")
+        start_timer()
+        clear_text()
     clear_text()
 
 def excs(event):
     user_word = str(entry.get())
     user_word = user_word.strip(" ")
     if current_word == 1:
-        colorchange(user_word, lable1)
+        colorchange(user_word, lable1, word1)
     elif current_word == 2:
-        colorchange(user_word, lable2)
+        colorchange(user_word, lable2, word2)
+    elif current_word == 3:
+        colorchange(user_word, lable3, word3)
+    elif current_word == 4:
+        colorchange(user_word, lable4, word4)
+    elif current_word == 5:
+        colorchange(user_word, lable5, word5)
 
 
 
