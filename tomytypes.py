@@ -154,18 +154,19 @@ def excs(event):
         colorchange(user_word, lable27, word27)
     elif current_word == 28:
         colorchange(user_word, lable28, word28)
-    elif current_word == 29:
         stop_timer()
+
 
 def exca(event):
     global current_word
-    current_word = 29
+    current_word = 28
     filler = 0
     excs(filler)
 
 
 root.bind("<space>", excs)
 root.bind("<Return>", exca)
+
 
 lablestart = Label(root, text = "")
 lablestart.grid(row=0,column=0)
